@@ -19,12 +19,12 @@ class Employee:
     @property
     def email(self):
         """Create an email for employee"""
-        return '{}.{}@email.com'.format(self.first, self.last)
+        return f'{self.first}.{self.last}@email.com'
 
     @property
     def fullname(self):
         """Creates full name for employee"""
-        return '{} {}'.format(self.first, self.last)
+        return f'{self.first} {self.last}'
 
     def apply_raise(self):
         """Gives an employee a raise based on the raise amount"""
@@ -33,7 +33,4 @@ class Employee:
     def monthly_schedule(self, month:str):
         """makes an GET request to a website to return some text"""
         response = requests.get(f'http://company.com/{self.last}/{month}')
-        if response.ok:
-            return response.text
-        else:
-            return 'Bad Response!'
+        return response.text if response.ok else 'Bad Response!'
